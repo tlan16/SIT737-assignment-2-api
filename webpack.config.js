@@ -1,30 +1,26 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+
+let nodeModules = {};
+fs.readdirSync('node_modules')
+    .filter(x => {
+        return ['.bin'].indexOf(x) === -1;
+    })
+    .forEach(mod => {
+        nodeModules[mod] = 'commonjs ' + mod;
+    });
 
 module.exports = {
-    entry: {
-        app: './src/index.js',
-    },
+    entry: path.resolve(__dirname, 'src', 'main.js'),
+    target: 'node',
+    externals: nodeModules,
     output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/',
     },
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
-        hot: true
-    },
+    devtool: 'eval',
     plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            title: 'Development'
-        }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
     ],
-    performance: {
-        hints: process.env.NODE_ENV === 'production' ? "warning" : false
-    },
 };

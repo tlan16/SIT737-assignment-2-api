@@ -61,4 +61,4 @@ typings/
 /.idea/
 
 # webpack
-/dist/bundle.js
+/dist/
