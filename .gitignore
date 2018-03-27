@@ -59,3 +59,6 @@ typings/
 
 # IDE
 /.idea/
+
+# webpack
+/dist/bundle.js
