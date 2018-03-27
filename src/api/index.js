@@ -7,5 +7,14 @@ module.exports = app => {
         res.send(['Hello', 'API']);
     });
 
-    app.post('/api/vision/label', upload.single('image'), vision);
+    app.post('/api/vision/label', upload.single('image'), (req, res) => {
+        const filePath = req.file.path;
+
+        vision(filePath, ({responses: visionResponse}) => {
+            res.send(visionResponse);
+        }, e => {
+            let msg = process.env.mode === 'production' ? 'Unexpected error. Please contact your system administrator.' : `Google vision api error: ${e}`;
+            res.status(500).send(msg);
+        });
+    });
 };
