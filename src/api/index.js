@@ -10,10 +10,12 @@ module.exports = app => {
     app.post('/api/vision/label', upload.single('image'), (req, res) => {
         const filePath = req.file.path;
 
-        vision(filePath, ({responses: visionResponse}) => {
-            res.send(visionResponse);
+        vision.get(filePath, labelAnnotations => {
+            labelAnnotations = vision.filter(labelAnnotations, 0.96);
+            labelAnnotations = vision.extract(labelAnnotations);
+            res.send(labelAnnotations);
         }, e => {
-            let msg = process.env.mode === 'production' ? 'Unexpected error. Please contact your system administrator.' : `Google vision api error: ${e}`;
+            const msg = process.env.mode === 'production' ? 'Unexpected error. Please contact your system administrator.' : `Google vision api error: ${e}`;
             res.status(500).send(msg);
         });
     });
