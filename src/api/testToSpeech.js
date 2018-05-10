@@ -12,7 +12,7 @@ const get = (q, target, callback) => {
             voice: target,
             accept: 'audio/wav'
         },
-        function(err, audio) {
+        (err, audio) => {
             tts.repairWavHeader(audio);
             callback(audio)
         }

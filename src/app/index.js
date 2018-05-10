@@ -1,5 +1,11 @@
-module.exports = app => {
-    app.get('/', (req, res) => {
-        res.send('<h1>Hello App</h1>');
-    });
-};
+const express = require('express');
+
+const app = require('./routes');
+require('dotenv').config();
+
+const application = express();
+
+app(application);
+
+application.listen(process.env.PORT);
+console.log(`Listening on port ${process.env.APP_PORT}...`);

@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 
-let nodeModules = {};
+const nodeModules = {};
 fs.readdirSync('node_modules')
     .filter(x => {
         return ['.bin'].indexOf(x) === -1;
@@ -12,12 +12,15 @@ fs.readdirSync('node_modules')
     });
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'main.js'),
+    entry: {
+        api: path.resolve(__dirname, 'src', 'api', 'index.js'),
+        app: path.resolve(__dirname, 'src', 'app', 'index.js'),
+    },
     target: 'node',
     externals: nodeModules,
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/',
     },
     devtool: 'eval',
