@@ -1,11 +1,13 @@
-const express = require('express');
+const Routes = require('./routes/index')
 
-const api = require('./routes');
-require('dotenv').config();
+const routes = app => {
+    app.get('/api/', (req, res) => {
+        res.send(['Hello', 'API'])
+    })
 
-const application = express();
+    Routes(app)
+}
 
-api(application);
-
-application.listen(process.env.PORT);
-console.log(`Listening on port ${process.env.API_PORT}...`);
+module.exports = app => {
+    routes(app)
+}

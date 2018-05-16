@@ -19,7 +19,7 @@ const translate = (q, target, callback) => {
 };
 
 const tts = (q, target, callback) => {
-    const tts = require('./testToSpeech');
+    const tts = require('./services/testToSpeech');
 
     tts.get(q, target, callback);
 };
