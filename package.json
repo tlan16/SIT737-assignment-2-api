@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "serve-api": "node src/index.js",
+    "dev-api": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-const Helpers = require('../../helpers')
+const Helpers = require('../helpers')
 
 const vision = (filePath, callback) => {
     const vision = require('../services/vision');
