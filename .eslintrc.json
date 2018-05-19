@@ -1,0 +1,50 @@
+{
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "rules": {
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ],
+    "no-extra-semi": 2,
+    "comma-spacing": [
+      2,
+      {
+        "after": true
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "import/order": [
+      "error"
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx"
+        ]
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

@@ -1,9 +1,9 @@
-const multer = require('multer');
+const multer = require('multer')
 
 const getPostData = () => {
-    return multer({dest: '/tmp/'});
+  return multer({dest: '/tmp/'})
 }
 
 module.exports = {
-    getPostData,
+  getPostData,
 }
