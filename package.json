@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve-api": "node src/index.js",
-    "dev-api": "nodemon src/index.js"
+    "serve": "node src/index.js",
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tlan16/SIT737-assignment-1/issues"
   },
