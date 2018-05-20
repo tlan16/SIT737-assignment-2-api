@@ -1,7 +1,7 @@
 const tts = app => {
-  app.get('/api/tts/translate', (req, res) => {
+  app.get('/api/tts/translate/:text', (req, res) => {
     const Tts = require('../services/testToSpeech')
-    Tts.translate(req.query.text, req.query.voice, speech => {
+    Tts.translate(req.params.text, req.query.voice, speech => {
       res.header('Content-Type', 'audio/wav')
       res.send(speech)
     })
