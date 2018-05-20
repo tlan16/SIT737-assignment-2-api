@@ -4,8 +4,7 @@ const tts = new watson({
   password: process.env.WATSON_TTS_PASSWORD,
   url: 'https://stream.watsonplatform.net/text-to-speech/api/',
 })
-
-const get = (q, target, callback) => {
+const translate = (q, target, callback) => {
   tts.synthesize(
     {
       text: q,
@@ -20,6 +19,13 @@ const get = (q, target, callback) => {
   )
 }
 
+const voices = (callback) => {
+  tts.listVoices({}, (err, data) => {
+    callback(data)
+  })
+}
+
 module.exports = {
-  get,
+  translate,
+  voices,
 }
