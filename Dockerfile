@@ -1,16 +1,9 @@
 FROM node:9.11.1-alpine
 
-RUN apk --update add \
-    bash \
-    && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm /var/cache/apk/*
-
-
 WORKDIR /src
 ADD . .
 
-RUN npm i
+RUN npm install --quiet --loglevel=error
 
 EXPOSE 3000
 
