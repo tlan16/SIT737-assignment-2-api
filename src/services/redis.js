@@ -1,20 +1,12 @@
 const Redis = require('redis')
-require('dotenv').config()
+const Config = require('../configurations/redis')
 
-const client = Redis.createClient({
-  host: process.env.REDIS_HOST,
-})
-const {promisify} = require('util')
+const client = Redis.createClient(Config)
+const getAsync = require('util').promisify(client.get).bind(client)
 
-const getAsync = promisify(client.get).bind(client)
-
-console.log({
-  host: process.env.REDIS_HOST,
-})
-
-client.on("error", err => {
+client.on("error", err =>
   console.error("Redis error " + err)
-})
+)
 
 module.exports = {
   client,

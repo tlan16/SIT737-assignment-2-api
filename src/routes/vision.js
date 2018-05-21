@@ -1,15 +1,14 @@
 const helpers = require('../helpers')
-const vision = require('../services/vision')
+const {labelAnalysis: Vision} = require('../services/vision')
 
-const analysis = app => {
+const vision = app => {
   app.post('/api/vision/label', helpers.getPostData().single('image'), (req, res) => {
-    const filePath = req.file.path
-    vision.get(filePath, labelAnnotations => {
+    Vision(req.file.path, labelAnnotations =>
       res.send(labelAnnotations)
-    })
+    )
   })
 }
 
 module.exports = app => {
-  analysis(app)
+  vision(app)
 }

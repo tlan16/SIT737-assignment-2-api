@@ -1,24 +1,18 @@
 const watson = require('watson-developer-cloud/text-to-speech/v1')
+const {tts: watsonConfig} = require('../configurations/watson')
 const {setCache, getFromCache} = require('../helpers')
 
-const watsonConfig = {
-  username: process.env.WATSON_TTS_USERNAME,
-  password: process.env.WATSON_TTS_PASSWORD,
-  url: 'https://stream.watsonplatform.net/text-to-speech/api/',
-}
+const Tts = new watson(watsonConfig)
 
-const tts = new watson(watsonConfig)
-
-const translate = (q, target, callback) => {
-  tts.synthesize(
+const tts = (q, target, callback) => {
+  Tts.synthesize(
     {
       text: q,
       voice: target,
       accept: 'audio/wav',
     },
     (err, audio) => {
-      console.log(err)
-      tts.repairWavHeader(audio)
+      Tts.repairWavHeader(audio)
       callback(audio)
     }
   )
@@ -44,6 +38,6 @@ const voices = (callback) => {
 }
 
 module.exports = {
-  translate,
+  tts,
   voices,
 }

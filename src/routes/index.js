@@ -1,6 +1,6 @@
-const Vision = require('./label')
+const Vision = require('./vision')
 const Translate = require('./translate')
-const Tts = require('./tts')
+const Tts = require('./testToSpeech')
 
 module.exports = app => {
   Vision(app)

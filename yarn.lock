@@ -1438,7 +1438,7 @@ google-p12-pem@^0.1.0:
 
 google-translate@^2.1.0:
   version "2.1.0"
-  resolved "https://registry.yarnpkg.com/google-translate/-/google-translate-2.1.0.tgz#7e7276d117f436e52bd89568a3cb75df5045eba1"
+  resolved "https://registry.yarnpkg.com/google-tts/-/google-tts-2.1.0.tgz#7e7276d117f436e52bd89568a3cb75df5045eba1"
   dependencies:
     async "2.6.0"
     he "1.1.1"
