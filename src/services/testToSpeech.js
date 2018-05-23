@@ -6,17 +6,30 @@ const {setCache, getFromCache} = require('../helpers')
 const Tts = new watson(watsonConfig)
 
 const tts = (q, target, callback) => {
-  Tts.synthesize(
-    {
-      text: q,
-      voice: target,
-      accept: 'audio/wav',
-    },
-    (err, audio) => {
-      Tts.repairWavHeader(audio)
-      if (callback instanceof Function) callback(audio)
+  const cacheKey = {
+    q,
+    target,
+    method: `${__dirname} ${__filename} tts`,
+  }
+
+  getFromCache(cacheKey, jsonString => {
+    if (jsonString && callback instanceof Function)
+      callback(Buffer.from(JSON.parse(jsonString)))
+    else {
+      Tts.synthesize(
+        {
+          text: q,
+          voice: target,
+          accept: 'audio/wav',
+        },
+        (err, audio) => {
+          Tts.repairWavHeader(audio)
+          if (callback instanceof Function) callback(audio)
+          setCache(cacheKey, JSON.stringify([...audio]))
+        }
+      )
     }
-  )
+  })
 }
 
 const voices = (callback) => {
