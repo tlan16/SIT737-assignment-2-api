@@ -1,5 +1,5 @@
-# SIT737-assignment-1
-This is for SIT737 assignment 1 at Deakin University for Trimaster 1, 2018
+# SIT737-assignment-2
+This is for SIT737 assignment 2 at Deakin University for Trimaster 1, 2018
 
 ## Documentation
 [Via Postman](https://documenter.getpostman.com/view/90962/RW89JTyQ)
