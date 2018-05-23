@@ -26,5 +26,5 @@ yarn
 ```
 Run
 ```
-npm start
+yarn start
 ```
