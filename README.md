@@ -6,7 +6,7 @@ This is for SIT737 assignment 2 at Deakin University for Trimaster 1, 2018
 
 ## Run
 ### Docker
-**Make sure port `3000` is *not* occupied**
+**Make sure port `3000` is *not* occupied**. Otherwise, you'll need to update `docker-compose.yml`
 
 Make sure no active container(s)
 ```
