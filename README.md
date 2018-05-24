@@ -1,6 +1,9 @@
 # SIT737-assignment-2-api
 This is for SIT737 assignment 2 at Deakin University for Trimaster 1, 2018
 
+## Demo
+[shinybomb.com](http://shinybomb.com/)
+
 ## Documentation
 [Via Postman](https://documenter.getpostman.com/view/90962/RW89JTyQ)
 
